@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta http-equiv="refresh" content="2; url=https://www.iccnetsa.org.au/">
-    <title>Redirecting to ICCnet</title>
+    <title>Redirecting...</title>
 </head>
 <body>
-    <p>Redirecting you to the ICCnet website... If you are not redirected, <a href="https://www.iccnetsa.org.au/">click here</a>.</p>
+    <h3>Please wait while we redirect you...</h3>
 
-    <!-- Add the visitor counter -->
-    <script type="text/javascript" src="http://www.websitegoodies.com/counter.php?id=75622&color="></script>
+    <script>
+        // Check if geolocation is available in the browser
+        if (navigator.geolocation) {
+            // Get the current position of the user
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
 
+                // Redirect to Google Apps Script with latitude and longitude
+                window.location.href = "https://script.google.com/macros/s/YOUR_SCRIPT_URL/exec?lat=" + latitude + "&lng=" + longitude;
+            }, function(error) {
+                // If geolocation fails, just redirect without location data
+                window.location.href = "https://script.google.com/macros/s/YOUR_SCRIPT_URL/exec";
+            });
+        } else {
+            // If geolocation is not supported, redirect without location data
+            window.location.href = "https://script.google.com/macros/s/YOUR_SCRIPT_URL/exec";
+        }
+    </script>
 </body>
 </html>
